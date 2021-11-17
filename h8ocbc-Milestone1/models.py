@@ -1,7 +1,7 @@
 # from datetime import datetime
 from config import db, ma
 from marshmallow import fields
-# from marshmallow import EXCLUDE
+from marshmallow import EXCLUDE
 
 class Director(db.Model):
     __tablename__ = 'directors'
@@ -44,7 +44,7 @@ class DirectorSchema(ma.SQLAlchemyAutoSchema):
         sqla_session = db.session 
         include_relationships = True
         load_instance = True
-        # unknown = EXCLUDE
+        unknown = EXCLUDE
     
     movies = fields.Nested('DirectorMovieSchema', default=[], many=True)
 
@@ -79,7 +79,7 @@ class MovieSchema(ma.SQLAlchemyAutoSchema):
         sqla_session = db.session 
         include_relationships = True
         load_instance = True
-        # unknown = EXCLUDE
+        unknown = EXCLUDE
 
     directors = fields.Nested("MovieDirectorSchema", default=None)
 
